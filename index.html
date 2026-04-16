@@ -3,274 +3,826 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>理系学生の就職活動</title>
+  <title>理系学生の就職活動 | 採用戦略レポート</title>
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+        "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
       color: #1f2937;
-      background: #f7f9fc;
-      line-height: 1.8;
+      background: #f5f7fb;
+      line-height: 1.85;
     }
+
+    a {
+      color: inherit;
+    }
+
     .container {
-      width: min(1100px, 92%);
+      width: min(1140px, 92%);
       margin: 0 auto;
     }
+
     header {
-      background: linear-gradient(135deg, #1d4ed8, #2563eb, #60a5fa);
-      color: white;
-      padding: 72px 0 56px;
+      background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 55%, #60a5fa 100%);
+      color: #ffffff;
+      padding: 72px 0 60px;
     }
+
     .hero-tag {
       display: inline-block;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 6px 12px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 14px;
       border-radius: 999px;
-      font-size: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
+
     h1 {
-      font-size: clamp(32px, 5vw, 56px);
-      line-height: 1.2;
       margin: 0 0 16px;
-      letter-spacing: 0.02em;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.15;
+      letter-spacing: 0.01em;
     }
-    .lead {
+
+    .hero-lead {
+      max-width: 860px;
       font-size: 18px;
-      max-width: 760px;
-      opacity: 0.95;
-      margin: 0;
+      opacity: 0.96;
+      margin: 0 0 28px;
     }
-    main { padding: 48px 0 72px; }
-    .section { margin-bottom: 28px; }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .hero-meta span {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 14px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 14px 0;
+      font-size: 14px;
+    }
+
+    .nav-inner a {
+      text-decoration: none;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 34px 0 72px;
+    }
+
+    section {
+      margin-bottom: 26px;
+      scroll-margin-top: 82px;
+    }
+
     .card {
-      background: white;
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-      margin-bottom: 24px;
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
+      border: 1px solid #eef2f7;
     }
+
     h2 {
-      font-size: 28px;
-      margin: 0 0 18px;
+      margin: 0 0 14px;
+      font-size: 30px;
+      line-height: 1.25;
       color: #0f172a;
     }
+
     h3 {
-      font-size: 20px;
-      margin: 0 0 12px;
-      color: #1e3a8a;
-    }
-    p { margin: 0 0 12px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-    .stat-box {
-      background: #eff6ff;
-      border: 1px solid #dbeafe;
-      border-radius: 16px;
-      padding: 20px 16px;
-    }
-    .stat-number {
-      font-size: 30px;
-      font-weight: 700;
+      margin: 0 0 10px;
+      font-size: 21px;
+      line-height: 1.35;
       color: #1d4ed8;
-      line-height: 1.2;
-      margin-bottom: 8px;
     }
-    .stat-label {
-      font-size: 14px;
-      color: #475569;
-      line-height: 1.6;
+
+    p {
+      margin: 0 0 12px;
     }
-    .point-list {
-      padding-left: 20px;
-      margin: 0;
+
+    .intro {
+      font-size: 17px;
+      color: #334155;
     }
-    .point-list li { margin-bottom: 10px; }
+
     .highlight {
       background: #eff6ff;
       border-left: 4px solid #2563eb;
+      border-radius: 12px;
       padding: 16px 18px;
-      border-radius: 10px;
-      margin-top: 12px;
+      margin-top: 16px;
+      color: #1e3a8a;
+      font-weight: 600;
     }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .kpi-box {
+      background: #f8fbff;
+      border: 1px solid #dbeafe;
+      border-radius: 18px;
+      padding: 18px 16px;
+    }
+
+    .kpi-number {
+      font-size: 30px;
+      font-weight: 800;
+      color: #1d4ed8;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .kpi-label {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.65;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 22px;
+      margin-top: 20px;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
     .flow {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
+      gap: 14px;
+      margin-top: 20px;
     }
+
     .flow-step {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 18px 14px;
       text-align: center;
-      font-weight: 600;
-      color: #334155;
     }
-    .industry-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .industry-box {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 18px;
-    }
-    .industry-box strong {
+
+    .flow-step strong {
       display: block;
-      margin-bottom: 8px;
-      color: #111827;
-      font-size: 16px;
+      color: #0f172a;
+      margin-bottom: 6px;
+      font-size: 15px;
     }
-    .note {
+
+    .flow-step span {
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .mini-card {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 18px;
+      height: 100%;
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 16px;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    .data-list,
+    .point-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .data-list li,
+    .point-list li {
+      margin-bottom: 10px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      font-size: 14px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      border: 1px solid #e5e7eb;
+      padding: 12px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .comparison-table th {
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-weight: 700;
+    }
+
+    .section-note {
+      margin-top: 14px;
       font-size: 14px;
       color: #64748b;
-      margin-top: 14px;
     }
-    .cta {
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .strategy-box {
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+    }
+
+    .strategy-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .roadmap-step {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 18px 16px;
+    }
+
+    .roadmap-step small {
+      display: block;
+      opacity: 0.75;
+      margin-bottom: 6px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .roadmap-step strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn {
       display: inline-block;
-      margin-top: 12px;
-      background: #2563eb;
-      color: white;
       text-decoration: none;
       padding: 14px 22px;
       border-radius: 999px;
       font-weight: 700;
     }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
     footer {
-      padding: 16px 0 48px;
+      padding: 8px 0 52px;
       color: #64748b;
       font-size: 14px;
     }
-    @media (max-width: 900px) {
-      .grid, .stats, .industry-grid, .flow { grid-template-columns: 1fr; }
-      header { padding: 56px 0 40px; }
-      .card { padding: 22px; }
+
+    @media (max-width: 980px) {
+      .kpi-grid,
+      .flow,
+      .three-col,
+      .roadmap,
+      .strategy-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      header {
+        padding: 56px 0 44px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <div class="hero-tag">Career Insight for STEM Students</div>
+      <div class="hero-tag">Recruiting Strategy Report</div>
       <h1>理系学生の就職活動</h1>
-      <p class="lead">
-        日本の理系学生は、就職情報サイトだけでなく、インターン、学校推薦、研究室、
-        キャリアセンター、OB・OGなど複数のルートを組み合わせながら就職活動を進めています。
-        特に近年は、インターンが志望形成に強く影響する傾向が高まっています。
+      <p class="hero-lead">
+        工学系・建築土木系学科の就職活動は、就職情報サイト、インターン、研究室・推薦、
+        キャリアセンター、OB・OGネットワークを組み合わせる「複線型」が基本です。
+        本ページでは、学科別の進路傾向と採用戦略への示唆を整理します。
       </p>
+      <div class="hero-meta">
+        <span>対象学科：機械・電気電子・制御情報・建築・土木</span>
+        <span>調査時期：2025年4月〜2026年3月</span>
+        <span>出典：大学公式・全国調査・主要就職媒体</span>
+      </div>
     </div>
   </header>
 
+  <div class="nav">
+    <div class="container nav-inner">
+      <a href="#summary">サマリー</a>
+      <a href="#structure">複線型構造</a>
+      <a href="#timing">早期化と推薦</a>
+      <a href="#support">学内支援</a>
+      <a href="#comparison">学科別比較</a>
+      <a href="#architecture">建築・土木</a>
+      <a href="#strategy">企業向け提言</a>
+      <a href="#sources">出典</a>
+    </div>
+  </div>
+
   <main>
     <div class="container">
-      <section class="section card">
-        <h2>理系就活の全体像</h2>
+
+      <section id="summary" class="card">
+        <h2>エグゼクティブサマリー</h2>
+        <p class="intro">
+          理系学生の就職活動は、就職情報サイトだけで完結する単線型ではありません。
+          企業認知はナビ媒体で取り、志望度形成はインターンで進み、
+          最終的な意思決定では研究室、推薦、OB・OGなどの接点が効いてきます。
+        </p>
         <p>
-          理系学生の就職活動は、1つの手段だけで完結するものではありません。
-          就職情報サイトで企業を知り、インターンで理解を深め、必要に応じて学校推薦や研究室経由の情報、
-          キャリアセンター、OB・OG接点を活用する「複線型」が基本です。
+          とくに理系は、研究内容や専門性と実務テーマとの接続、配属・職種の明確さ、
+          技術テーマの具体性が志望度に大きく影響します。院生や技術系学生に対しては、
+          「どの仕事をするのか」「どの技術に触れるのか」「どこに配属されるのか」を
+          どれだけ明確に伝えられるかが採用競争力を左右します。
         </p>
         <div class="highlight">
-          近年の特徴は、「まず見つける」「実際に接点を持つ」「納得して意思決定する」という
-          3段階の流れが明確になっている点です。
+          重要：理系採用は「広く集める」だけでは足りません。学科ごとの進路構造に合わせて、
+          訴求職種、インターン設計、研究接続、学内接点の組み方を変える必要があります。
         </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-box">
+            <div class="kpi-number">28.5%</div>
+            <div class="kpi-label">企業発見源の首位は就職情報サイト</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-number">21.1%</div>
+            <div class="kpi-label">理系学生ではインターン経由の認知が高い</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-number">26.7%</div>
+            <div class="kpi-label">理系で志望度が高まったタイミングはインターン参加時</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-number">26.8%</div>
+            <div class="kpi-label">全体のOB・OG訪問経験率</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-number">68.7%</div>
+            <div class="kpi-label">SNS・ソーシャルメディア活用率</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="structure" class="card">
+        <h2>理系就活の複線型構造</h2>
+        <p>
+          理系学生は、企業認知、比較検討、志望形成、意思決定の各段階で異なるチャネルを使い分けています。
+          初期接点としては就職情報サイトが強い一方で、志望度の上昇や職種理解にはインターンが大きく寄与し、
+          研究室・推薦・OB/OGが最終判断を後押しする構図です。
+        </p>
+
         <div class="flow">
-          <div class="flow-step">就職情報サイトで企業を知る</div>
-          <div class="flow-step">インターンで理解を深める</div>
-          <div class="flow-step">研究室・推薦で精度を上げる</div>
-          <div class="flow-step">OB・OGや学内支援で比較する</div>
-          <div class="flow-step">内定・意思決定</div>
+          <div class="flow-step">
+            <strong>就職情報サイト</strong>
+            <span>企業を知る入口。母集団形成の主戦場。</span>
+          </div>
+          <div class="flow-step">
+            <strong>インターン</strong>
+            <span>仕事内容と技術テーマの理解を深める。</span>
+          </div>
+          <div class="flow-step">
+            <strong>研究室・推薦</strong>
+            <span>専門性との接続と技術職採用の精度を高める。</span>
+          </div>
+          <div class="flow-step">
+            <strong>OB・OG</strong>
+            <span>納得感やリアリティの補強に効く。</span>
+          </div>
+          <div class="flow-step">
+            <strong>内定・意思決定</strong>
+            <span>複数接点を経て最終判断へ進む。</span>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <strong>理系就活で重要なチャネル</strong>
+            <ul class="point-list">
+              <li>就職情報サイト</li>
+              <li>インターンシップ・仕事体験</li>
+              <li>学校推薦・学科推薦</li>
+              <li>研究室・教員ルート</li>
+              <li>キャリアセンター</li>
+              <li>OB・OG訪問</li>
+              <li>SNS・ダイレクトリクルーティング</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <strong>企業が理解すべきポイント</strong>
+            <ul class="point-list">
+              <li>認知獲得と志望形成のチャネルは同じではない</li>
+              <li>理系では研究内容と業務テーマの接続が重要</li>
+              <li>職種や配属の曖昧さは歩留まり悪化につながる</li>
+              <li>推薦の前に志望形成が進むケースが増えている</li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section class="section card">
-        <h2>注目データ</h2>
-        <div class="stats">
-          <div class="stat-box">
-            <div class="stat-number">28.5%</div>
-            <div class="stat-label">入社意思が最も高い企業を知った情報源が就職情報サイト</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">17.7%</div>
-            <div class="stat-label">全体でインターン・仕事体験が企業認知の主要ルート</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">21.1%</div>
-            <div class="stat-label">理系学生ではインターン経由の認知がさらに高い</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">68.7%</div>
-            <div class="stat-label">SNS・ソーシャルメディアを就活準備や情報収集に活用</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section grid">
-        <div class="card">
-          <h3>理系就活で重要なチャネル</h3>
-          <ul class="point-list">
-            <li>就職情報サイト</li>
-            <li>インターンシップ・仕事体験</li>
-            <li>学校推薦・学科推薦</li>
-            <li>研究室・教員ルート</li>
-            <li>キャリアセンター</li>
-            <li>OB・OG訪問</li>
-            <li>SNS・ダイレクトリクルーティング</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>理系学生が重視しやすいポイント</h3>
-          <ul class="point-list">
-            <li>研究内容や専門との親和性</li>
-            <li>配属先や職種が明確かどうか</li>
-            <li>インターンで仕事内容を具体的に理解できるか</li>
-            <li>技術職としての成長環境があるか</li>
-            <li>大学・研究室の先輩実績があるか</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section card">
-        <h2>まとめ</h2>
+      <section id="timing" class="card">
+        <h2>採用早期化と学校推薦の位置づけ変化</h2>
         <p>
-          理系学生の就職活動は、就職情報サイトだけではなく、
-          インターン、学校推薦、研究室、キャリアセンター、OB・OGなどを組み合わせながら進むのが実態です。
+          学校推薦は今も重要なルートですが、企業の広報・選考活動の早期化により、
+          実務上は推薦解禁前に企業理解と志望形成が進んでいるケースが増えています。
+          そのため、推薦があるから後半で勝負すればよい、という考え方は通用しにくくなっています。
         </p>
+
+        <div class="three-col">
+          <div class="mini-card">
+            <strong>43.7%</strong>
+            推薦状発行時期で最も多いのは「6月以降」
+          </div>
+          <div class="mini-card">
+            <strong>33.2%</strong>
+            大学等のうち「学校推薦を行っていない」割合
+          </div>
+          <div class="mini-card">
+            <strong>早期化が進行</strong>
+            広報活動・選考活動が推薦前に進みやすい構造
+          </div>
+        </div>
+
+        <div class="highlight">
+          重要：推薦は残っているが、主戦場はその前にある。技術テーマ、職種、配属の解像度を
+          早期に提示できる企業ほど、理系学生の志望形成に入り込みやすい。
+        </div>
+      </section>
+
+      <section id="support" class="card">
+        <h2>学内支援の実態：キャリアセンター × 教員・研究室</h2>
         <p>
-          特に近年は、インターンを通じて企業理解や職種理解を深める流れが強まっており、
-          学科や専攻によって重視されるチャネルや就職先の傾向も大きく異なります。
+          理系採用では、キャリアセンターだけを見ていても実態をつかみきれません。
+          教員・研究室・学科独自プログラムとの連携が強く、特に専門性が高い領域ほど、
+          学内のクローズドな接点が効きます。
         </p>
-        <a href="#details" class="cta">詳細を確認する</a>
-     <section id="details" class="section card">
-  <h2>詳細データ</h2>
-  <p>
-    理系学生の就職活動では、就職情報サイトが入口になりやすい一方で、
-    実際の志望形成にはインターンや研究室、学校推薦など複数の要素が関わります。
-  </p>
-  <p>
-    特に理系では、専門分野との親和性や配属先、仕事内容の明確さが重視される傾向があります。
-    機械系、電気電子系、制御系、建築系、土木系など、学科によって就職先の傾向や
-    重視する情報も異なります。
-  </p>
-  <p>
-    そのため、企業が理系学生に向けて情報発信を行う場合は、
-    「どんな技術が活かせるのか」「どんな仕事をするのか」「どのようなキャリアが描けるのか」を
-    具体的に示すことが重要です。
-  </p>
-</section></html>
+
+        <div class="three-col">
+          <div class="mini-card">
+            <strong>44.6%</strong>
+            2026年卒でキャリアセンター参加率60%以上とみる大学
+          </div>
+          <div class="mini-card">
+            <strong>22.7%</strong>
+            教員と「十分に連携できている」と回答
+          </div>
+          <div class="mini-card">
+            <strong>66.4%</strong>
+            教員と「やや連携できている」と回答
+          </div>
+        </div>
+
+        <p class="section-note">
+          合計89.1%が教員と何らかの連携ができていると回答しており、
+          工学系就活では教員・研究室と就職支援の接続が前提になっています。
+        </p>
+      </section>
+
+      <section id="comparison" class="card">
+        <h2>学科別比較：進路傾向と採用示唆</h2>
+        <p>
+          同じ理系でも、学科ごとに志向業界、就活チャネル、進学率、重視する訴求ポイントは大きく異なります。
+          企業側は「理系向けにまとめて訴求する」のではなく、職種軸・技術軸で最適化する必要があります。
+        </p>
+
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>学科</th>
+              <th>主な進路傾向</th>
+              <th>特徴</th>
+              <th>採用示唆</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>機械工学科</td>
+              <td>製造業 66.7%</td>
+              <td>設計・開発・生産技術など、ものづくり中核職に強い</td>
+              <td>製品・設備・開発テーマを具体的に見せる訴求が有効</td>
+            </tr>
+            <tr>
+              <td>電気電子</td>
+              <td>製造 38.8%、情報通信 27.6%</td>
+              <td>ハードとソフトの二本柱。半導体、通信、設備、電力にも広がる</td>
+              <td>職種を曖昧にせず、ハード/制御/通信の違いを明示する</td>
+            </tr>
+            <tr>
+              <td>制御・情報</td>
+              <td>情報通信 36.7%、製造 30.0%</td>
+              <td>IT・組み込み・SI寄り。研究テーマが職種選択に直結しやすい</td>
+              <td>プログラミング、制御、システム実装との接続を示す</td>
+            </tr>
+            <tr>
+              <td>システム制御</td>
+              <td>院進学率 約90%</td>
+              <td>修士前提の進路設計になりやすい</td>
+              <td>学部向けと院生向けで採用メッセージを分ける必要がある</td>
+            </tr>
+            <tr>
+              <td>精密・ロボット・メカトロ</td>
+              <td>ハード＋ソフト＋制御の横断型</td>
+              <td>職種・配属・技術テーマの具体性が志望度に効く</td>
+              <td>実装型インターン、長期インターン、配属明示が強い</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="highlight">
+          重要：同じ「工学系」でも、機械は製造中核職、電気は製造×通信、制御情報はIT・組み込み寄り。
+          訴求は学科別ではなく、実質的には「職種軸」で分けて考える必要があります。
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>精密・ロボット・メカトロニクスと院生ニーズ</h2>
+        <p>
+          精密、ロボット、メカトロニクス系では、研究内容と実務テーマの近さが強く意識されます。
+          そのため、企業名や知名度だけでなく、「どの技術に触れられるか」「どの職種で採用されるか」が
+          志望度を大きく左右します。
+        </p>
+
+        <div class="three-col">
+          <div class="mini-card">
+            <strong>77.8%</strong>
+            理系院生が配属確約を希望
+          </div>
+          <div class="mini-card">
+            <strong>53.7%</strong>
+            配属確約を求める理由の最多は「希望職種を選びたい」
+          </div>
+          <div class="mini-card">
+            <strong>85.3%</strong>
+            5日程度のインターン参加者のうち志望度上昇
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <strong>各学科のインターン特性</strong>
+            <ul class="data-list">
+              <li>精密工学科：2〜3週間のインターン例</li>
+              <li>ロボット工学科：5日以上の正課インターン例</li>
+              <li>メカトロニクス系：40日長期インターン例</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <strong>採用側の示唆</strong>
+            <ul class="data-list">
+              <li>職種別採用や配属イメージを具体的に示す</li>
+              <li>研究テーマとの接続を求人や説明会で明確にする</li>
+              <li>短期説明型より、実装・体験型の接点設計が効きやすい</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture" class="card">
+        <h2>建築と土木：チャネルと進路の本質的な違い</h2>
+        <p>
+          建築と土木は同じ「建設系」に見えても、チャネルも進路構造も大きく異なります。
+          建築は学科コミュニティとOB・OGネットワークが強く、土木は公務員・公共インフラ・建設コンサルが太いのが特徴です。
+        </p>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <strong>建築学科：OB・OGネットワーク型</strong>
+            <ul class="data-list">
+              <li>建設業比率 53.6%</li>
+              <li>不動産比率 11.6%</li>
+              <li>OB・OGネットワーク 3万人超</li>
+              <li>懇談会参加企業から約4割が内定</li>
+            </ul>
+            <p>
+              4月からのガイダンス、10〜12月のOB・OG懇談会など、
+              学科独自の就職支援が非常に強い領域です。
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>土木工学科：官公庁・公共インフラ型</strong>
+            <ul class="data-list">
+              <li>建設業 29%</li>
+              <li>公務 27%</li>
+              <li>建設コンサル 15%</li>
+              <li>公共企業体等 8%</li>
+            </ul>
+            <p>
+              公務員対策プログラムや学科独自の指導が重要チャネルであり、
+              民間建設会社ルートと並んで、官公庁・公共企業への進路が強い構造です。
+            </p>
+          </div>
+        </div>
+
+        <div class="highlight">
+          建築は「学科コミュニティ型」、土木は「公共インフラ型」。
+          同じ建設系でも、採用メッセージと接点設計は分けて考える必要があります。
+        </div>
+      </section>
+
+      <section id="strategy" class="card">
+        <h2>企業向け提言：理系採用の4つの戦略</h2>
+        <p>
+          本調査から導ける実務的な示唆は、単に母集団を広げることではなく、
+          学科ごとの進路構造に合わせて採用導線を再設計することです。
+        </p>
+
+        <div class="strategy-grid">
+          <div class="strategy-box">
+            <div class="strategy-no">1</div>
+            <h3>学科別に職種・技術テーマで訴求を最適化</h3>
+            <p>
+              機械、電気電子、制御情報、精密、ロボット、メカトロニクス、建築、土木では、
+              重視する職種理解が異なります。学科名に合わせるより、
+              実際の仕事内容と技術テーマで訴求を分けることが重要です。
+            </p>
+          </div>
+
+          <div class="strategy-box">
+            <div class="strategy-no">2</div>
+            <h3>母集団はナビ、志望度はインターンで獲得</h3>
+            <p>
+              認知獲得は就職情報サイト、志望形成はインターンという役割分担を前提に、
+              早期接点の質を高める設計が必要です。特に理系では、インターンが理解促進に直結します。
+            </p>
+          </div>
+
+          <div class="strategy-box">
+            <div class="strategy-no">3</div>
+            <h3>研究室・教員・OB/OG接点を設計する</h3>
+            <p>
+              キャリアセンターだけでなく、研究室や教員、学科ネットワーク、卒業生接点を
+              採用導線の一部として捉えることが有効です。特に建築・土木・専門性の高い工学系で効果が大きいです。
+            </p>
+          </div>
+
+          <div class="strategy-box">
+            <div class="strategy-no">4</div>
+            <h3>院生には配属・職種・研究接続を明示</h3>
+            <p>
+              院生や高度専門学生ほど、配属、職種、研究テーマとの接続を重視します。
+              配属先の不透明さは離脱要因になりやすく、逆に具体性は強い引力になります。
+            </p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 28px;">実行ロードマップ</h3>
+        <div class="roadmap">
+          <div class="roadmap-step">
+            <small>Step 1</small>
+            <strong>企業認知</strong>
+            ナビ媒体で広く接点を取る
+          </div>
+          <div class="roadmap-step">
+            <small>Step 2</small>
+            <strong>志望形成</strong>
+            インターンで技術テーマを体感させる
+          </div>
+          <div class="roadmap-step">
+            <small>Step 3</small>
+            <strong>意思決定</strong>
+            OB・OGや研究室接点で納得感を補強する
+          </div>
+          <div class="roadmap-step">
+            <small>Step 4</small>
+            <strong>内定・採用</strong>
+            推薦・選考と接続し歩留まりを高める
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="#sources" class="btn btn-primary">出典を確認する</a>
+          <a href="#summary" class="btn btn-secondary">ページ上部に戻る</a>
+        </div>
+      </section>
+
+      <section id="sources" class="card">
+        <h2>出典・参考情報</h2>
+        <p>
+          本ページは、理系学生の就職活動傾向を整理したテキスト資料と、
+          それをスライド化した採用戦略レポートをもとに再構成しています。
+        </p>
+        <ul class="point-list">
+          <li>マイナビ調査：理系学生の企業発見源、インターン影響、SNS活用など</li>
+          <li>文部科学省調査：推薦状発行時期、採用活動の早期化傾向</li>
+          <li>就職みらい研究所：キャリアセンター利用と教員連携</li>
+          <li>大学公式データ：明治大学、日本大学、東京科学大学、大阪工業大学等</li>
+          <li>LabBase調査：院生の配属確約ニーズ、情報収集開始時期、インターン参加傾向</li>
+        </ul>
+        <p class="section-note">
+          このページは採用戦略の示唆を得るための整理版であり、学科ごとの詳細ソース確認や、
+          業界別の深掘り資料にも展開しやすい構成にしています。
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      理系学生の就職活動傾向資料をもとに再構成したHTMLレポートページ
+    </div>
+  </footer>
+</body>
+</html>
